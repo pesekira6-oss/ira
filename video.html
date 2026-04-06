@@ -31,7 +31,6 @@
             padding: 10px 0;
             position: sticky;
             top: 0;
-            z-index: 1000;
         }
 
         nav a {
@@ -49,11 +48,11 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 40px auto;
-            padding: 30px;
             background: white;
-            border-radius: 25px;
+            padding: 30px;
+            border-radius: 20px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(219, 112, 147, 0.2);
             border: 2px solid #ffc0cb;
@@ -61,30 +60,32 @@
 
         h2 {
             color: #db7093;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
-        /* Styling untuk Frame Video */
         .video-wrapper {
             position: relative;
-            padding: 10px;
-            background: #ffb6c1;
+            padding-bottom: 56.25%; /* Rasio 16:9 */
+            height: 0;
+            overflow: hidden;
             border-radius: 15px;
-            display: inline-block;
-            line-height: 0;
+            border: 5px solid #ffb6c1;
+            background: #000;
         }
 
-        video {
+        .video-wrapper iframe, 
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 700px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            height: 100%;
         }
 
-        .video-info {
+        .description {
             margin-top: 20px;
             font-style: italic;
-            color: #ff69b4;
+            color: #db7093;
         }
 
         footer {
@@ -108,16 +109,21 @@
     </nav>
 
     <div class="container">
-        <h2>Video Dokumentasi</h2>
+        <h2>Video Favorit</h2>
         
         <div class="video-wrapper">
-            <video controls>
-                <source src="video.mp4" type="video.mp4">
-                Browser Anda tidak mendukung tag video. Silakan gunakan browser terbaru.
-            </video>
+            <iframe 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
         </div>
 
-        <p class="video-info">Klik tombol play untuk memutar video bertema pink.</p>
+        <p class="description">
+            "Video ini adalah bagian dari dokumentasi tugas pemrograman web saya."
+        </p>
     </div>
 
     <footer>
