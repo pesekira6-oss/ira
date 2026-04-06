@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Pink - Home</title>
+    <style>
+        /* CSS UNTUK TEMA PINK */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fff0f5; /* Lavender Blush (Pink sangat muda) */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #ff69b4; /* Hot Pink */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Navigasi */
+        nav {
+            background-color: #ffb6c1; /* Light Pink */
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #ff69b4;
+            color: white;
+        }
+
+        /* Konten Utama */
+        .main-content {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid #ffc0cb;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(255, 182, 193, 0.3);
+        }
+
+        h1 {
+            color: #db7093; /* Pale Violet Red */
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .btn-start {
+            display: inline-block;
+            background-color: #ff69b4;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .btn-start:hover {
+            transform: scale(1.05);
+            background-color: #db7093;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #ff69b4;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Pink Project</h1>
+        <p>Selamat Datang di Tugas Pemrograman Web</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Index</a>
+        <a href="biodata.html">Biodata</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="video.html">Video</a>
+    </nav>
+
+    <div class="main-content">
+        <h2>Halo, Dosen!</h2>
+        <br>
+        <p>
+            Ini adalah halaman utama (Index) dari website bertema <b>Pink</b> saya. 
+            Website ini terdiri dari 4 file HTML yang saling terhubung melalui navigasi di atas.
+        </p>
+        <p>Silakan klik menu di atas untuk menjelajahi biodata, galeri, dan video saya.</p>
+        
+        <a href="biodata.html" class="btn-start">Lihat Biodata Saya</a>
+    </div>
+
+    <footer>
+        &copy; 2026 - Dibuat dengan &hearts; untuk Tugas Kuliah
+    </footer>
+
+</body>
+</html>
