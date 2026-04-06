@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video - Pink Theme</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fff0f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #4a4a4a;
+        }
+
+        header {
+            background-color: #ff69b4;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #ffb6c1;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #ff69b4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(219, 112, 147, 0.2);
+            border: 2px solid #ffc0cb;
+        }
+
+        h2 {
+            color: #db7093;
+            margin-bottom: 25px;
+        }
+
+        /* Styling untuk Frame Video */
+        .video-wrapper {
+            position: relative;
+            padding: 10px;
+            background: #ffb6c1;
+            border-radius: 15px;
+            display: inline-block;
+            line-height: 0;
+        }
+
+        video {
+            width: 100%;
+            max-width: 700px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .video-info {
+            margin-top: 20px;
+            font-style: italic;
+            color: #ff69b4;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #ff69b4;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Konten Video</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Index</a>
+        <a href="biodata.html">Biodata</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="video.html">Video</a>
+    </nav>
+
+    <div class="container">
+        <h2>Video Dokumentasi</h2>
+        
+        <div class="video-wrapper">
+            <video controls>
+                <source src="video-saya.mp4" type="video/mp4">
+                Browser Anda tidak mendukung tag video. Silakan gunakan browser terbaru.
+            </video>
+        </div>
+
+        <p class="video-info">Klik tombol play untuk memutar video bertema pink.</p>
+    </div>
+
+    <footer>
+        &copy; 2026 - Koleksi Video Pink
+    </footer>
+
+</body>
+</html>
