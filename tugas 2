@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Data & Transaksi</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; padding: 20px; }
+        .container { max-width: 700px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h2 { border-bottom: 2px solid #0056b3; padding-bottom: 10px; margin-top: 30px; color: #333; font-size: 20px;}
+        h2:first-child { margin-top: 0; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
+        input[type="text"], input[type="date"], input[type="tel"], input[type="email"], input[type="number"], textarea, select {
+            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;
+        }
+        /* Styling untuk Radio Button layaknya Push Button */
+        .radio-toolbar { display: flex; gap: 10px; }
+        .radio-toolbar input[type="radio"] { opacity: 0; position: fixed; width: 0; }
+        .radio-toolbar label { display: inline-block; background-color: #e0e0e0; padding: 10px 20px; border-radius: 4px; cursor: pointer; border: 1px solid #ccc; width: 100%; text-align: center; }
+        .radio-toolbar input[type="radio"]:checked + label { background-color: #0056b3; color: white; border-color: #0056b3; }
+        
+        button.submit-btn { background-color: #28a745; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; margin-top: 20px; font-weight: bold;}
+        button.submit-btn:hover { background-color: #218838; }
+        #loading { display: none; text-align: center; margin-top: 15px; color: #0056b3; font-weight: bold;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form id="dataForm">
+        <h2>Data Demografi</h2>
+        <div class="form-group">
+            <label>Nama Pengguna</label>
+            <input type="text" name="nama" required>
+        </div>
+        <div class="form-group">
+            <label>Tanggal Lahir</label>
+            <input type="date" name="tanggal_lahir" required>
+        </div>
+        <div class="form-group">
+            <label>Alamat</label>
+            <textarea name="alamat" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>No Telepon</label>
+            <input type="tel" name="telepon" required>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label>Pendidikan (Pilih atau Ketik)</label>
+            <input list="pendidikan-list" name="pendidikan" required placeholder="Cari atau pilih...">
+            <datalist id="pendidikan-list">
+                <option value="SD"></option>
+                <option value="SMP"></option>
+                <option value="SMA/SMK"></option>
+                <option value="D3"></option>
+                <option value="S1"></option>
+                <option value="S2"></option>
+                <option value="S3"></option>
+            </datalist>
+        </div>
+
+        <h2>Data Bank</h2>
+        <div class="form-group">
+            <label>Nama Bank (Pilih atau Ketik)</label>
+            <input list="bank-list" name="bank" required placeholder="Cari atau pilih bank...">
+            <datalist id="bank-list">
+                <option value="Bank BCA"></option>
+                <option value="Bank Mandiri"></option>
+                <option value="Bank BNI"></option>
+                <option value="Bank BRI"></option>
+                <option value="Bank Syariah Indonesia (BSI)"></option>
+                <option value="Bank CIMB Niaga"></option>
+                <option value="Bank Permata"></option>
+                <option value="SeaBank"></option>
+                <option value="Bank Jago"></option>
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label>Nomor Rekening</label>
+            <input type="number" name="rekening" required>
+        </div>
+
+        <h2>Data Transaksi Keuangan</h2>
+        <div class="form-group">
+            <label>Tanggal Transaksi</label>
+            <input type="date" name="tanggal_transaksi" required>
+        </div>
+        <div class="form-group">
+            <label>Uraian Transaksi</label>
+            <input type="text" name="uraian" required placeholder="Misal: Pembayaran Listrik, Gaji, dll">
+        </div>
+        <div class="form-group">
+            <label>Jenis Transaksi</label>
+            <div class="radio-toolbar">
+                <input type="radio" id="jenis_masuk" name="jenis_transaksi" value="Pemasukan" required>
+                <label for="jenis_masuk">Pemasukan</label>
+                
+                <input type="radio" id="jenis_keluar" name="jenis_transaksi" value="Pengeluaran">
+                <label for="jenis_keluar">Pengeluaran</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Debet (Jika Pengeluaran)</label>
+            <input type="number" name="debet" value="0" min="0">
+        </div>
+        <div class="form-group">
+            <label>Kredit (Jika Pemasukan)</label>
+            <input type="number" name="kredit" value="0" min="0">
+        </div>
+
+        <button type="submit" class="submit-btn">Simpan Data</button>
+        <p id="loading">Memproses data... Mohon tunggu.</p>
+    </form>
+</div>
+
+<script>
+    // GANTI URL DI BAWAH DENGAN URL WEB APP GOOGLE APPS SCRIPT ANDA
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyrm83-6FmxvPciUUuZV1khIp0IrZnEeBE8wDjlRQPWc7KtvMLop2VimA2iN6x18ZmYUA/exec';
+    
+    const form = document.getElementById('dataForm');
+    const loadingText = document.getElementById('loading');
+    const submitBtn = document.querySelector('.submit-btn');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        
+        // Disable button & tunjukkan loading
+        submitBtn.disabled = true;
+        loadingText.style.display = 'block';
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                alert('Data berhasil disimpan ke Google Sheets!');
+                form.reset(); // Kosongkan form setelah sukses
+                submitBtn.disabled = false;
+                loadingText.style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('Terjadi kesalahan saat mengirim data.');
+                submitBtn.disabled = false;
+                loadingText.style.display = 'none';
+            });
+    });
+</script>
+
+</body>
+</html>
